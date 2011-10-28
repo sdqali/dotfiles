@@ -32,17 +32,6 @@ keyCode_volUp = 0x1008ff13
 keyCode_volMute = 0x1008ff12
 keyCode_suspend = 0x1008ffa7
 
--- Color definitions
-colorDef_white = "#ffffff"
-colorDef_darkGray = "#888888"
-colorDef_midGray = "#111111"
-colorDef_green = "00ff00"
-colorDef_red = "ff0000"
-                   
--- Color assignments
-color_focusedBorder = colorDef_green
-color_normalBorder = colorDef_red
-
 -- Additional workspaces & associated hotkeys
 addWorkspaces = [("0", xK_0)]
 
@@ -58,8 +47,9 @@ my_modKey = mod4Mask
 myConfig = withUrgencyHook NoUrgencyHook defaultConfig
     { terminal = my_terminal
     , modMask = my_modKey
-    , focusedBorderColor = color_focusedBorder
-    , normalBorderColor = color_normalBorder
+    , focusedBorderColor = "red"
+    , normalBorderColor = "gray"
+    , borderWidth = 3
     , manageHook = floatNextHook
                <+> manageDocks
                <+> (isFullscreen --> doFullFloat)
