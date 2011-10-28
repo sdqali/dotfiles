@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Actions.GridSelect
+import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FloatNext
 import XMonad.Hooks.ManageDocks
@@ -51,7 +52,6 @@ noStealFocusWins = ["Pidgin"]
 -- Misc constants
 my_terminal = "xfce4-terminal"
 my_modKey = mod4Mask
--- xmproc = spawnPipe "xmobar /home/sdqali/.xmobarrc"
 
 
 -- General configuration
@@ -60,10 +60,6 @@ myConfig = withUrgencyHook NoUrgencyHook defaultConfig
     , modMask = my_modKey
     , focusedBorderColor = color_focusedBorder
     , normalBorderColor = color_normalBorder
---    , logHook = dynamicLogWithPP xmobarPP
---                                       { ppOutput = hPutStrLn xmproc
---                                       , ppTitle = xmobarColor "green" "" . shorten 50
---                                      }
     , manageHook = floatNextHook
                <+> manageDocks
                <+> (isFullscreen --> doFullFloat)
@@ -113,35 +109,15 @@ myKeys = [ ((my_modKey .|. shiftMask, xK_l), spawn cmd_lockScreen)
             , (ws, k) <- addWorkspaces]
 
 
--- Status bar configuration
-myStatusBar = statusBar ("dzen2 " ++ flags) dzenPP' $ const (my_modKey, xK_b)
-    where fg = "white"  -- Default: #a8a3f7
-          bg = "black"  -- Default: #3f3c6d
-          flags = "-e 'onstart=lower' -w 1055 -ta l -fg "
-               ++ fg
-               ++ " -bg "
-               ++ bg
-               ++ " -fn '-*-profont-*-*-*-*-11-*-*-*-*-*-*-*'"
-          dzenPP' = let lt = colorDef_white
-                        md = colorDef_darkGray
-                        dk = "black"
-                    in defaultPP
-                        { ppCurrent = dzenColor dk lt . pad
-                        , ppVisible = dzenColor dk md . pad
-                        , ppHidden = dzenColor lt dk . pad
-                        , ppHiddenNoWindows = const ""
-                        , ppUrgent = dzenColor "blue" "red" . dzenStrip
-                        , ppWsSep = ""
-                        , ppSep = ""
-                        , ppLayout = dzenColor dk md . \x -> pad $ case x of
-                            "Maximize Tall" -> "MXT"
-                            "Tabbed Simplest" -> "TAB"
-                            _ -> x
-                        , ppTitle = dzenColor lt dk . pad . dzenEscape
-                        }
-
 -- Workspace layouts
 myLayouts = (maximize $ Tall 1 (3/100) (1/2))
         ||| simpleTabbed
 
-main = xmonad =<< xmobar =<< myStatusBar myConfig
+main = do
+  h <- spawnPipe "xmobar /home/sdqali/.xmobarrc"
+  xmonad =<< xmobar myConfig {
+    logHook = dynamicLogWithPP $ xmobarPP
+                                      { ppOutput = hPutStrLn h
+                                      , ppTitle = xmobarColor "green" "" . shorten 50
+                                      }
+    }
