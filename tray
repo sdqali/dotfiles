@@ -1,0 +1,4 @@
+#!/bin/sh
+# Script to launch trayer in the correct position next to xmobar.
+trayer --edge top --align right --margin 0 --width 120 --widthtype pixel --height 16 \
+	--padding 1 --tint 0x00000 --transparent true
