@@ -108,6 +108,8 @@ myLayouts = (maximize $ Tall 1 (3/100) (1/2))
 main = do
   h <- spawnPipe "xmobar /home/sdqali/.xmobarrc"
   t <- spawnPipe "/home/sdqali/bin/tray"
+  k <- spawnPipe "/home/sdqali/bin/map_ctrl"
+  k <- spawnPipe "nm-applet"
   xmonad =<< xmobar myConfig {
     logHook = dynamicLogWithPP $ xmobarPP
                                       { ppOutput = hPutStrLn h

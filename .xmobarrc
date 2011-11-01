@@ -13,6 +13,6 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
              ]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%StdinReader% }{%cpu% | %memory% * %swap% | %eth0% }{ <fc=#ee9a00>%date%</fc>"
+, template = "%StdinReader% }{%cpu% | %memory% * %swap% | %eth0% | <fc=#ee9a00>%date%</fc>"
 }
 
