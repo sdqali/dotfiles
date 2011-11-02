@@ -126,7 +126,7 @@
 (ido-mode 1)
 
 
-; Install mode-compile to give friendlier compiling support!
+;; Install mode-compile to give friendlier compiling support!
 (load "~/.emacs.d/mode-compile.el")
 (require 'mode-compile)
 (autoload 'mode-compile "mode-compile"
@@ -135,3 +135,10 @@
 (autoload 'mode-compile-kill "mode-compile"
   "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key (kbd "C-c k") 'mode-compile-kill)
+
+
+;; Set text-mode as the default mode
+(setq-default major-mode 'text-mode)
+
+;; Enable flyspell while in text-mode
+(add-hook 'text-mode-hook 'flyspell-mode)
