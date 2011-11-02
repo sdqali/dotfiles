@@ -108,6 +108,7 @@
 ;;set key for revert-buffer
 (global-set-key (kbd "M-r") 'revert-buffer)
 
+
 ;;nitrogen mode
 (load "~/.emacs.d/javascript.el")
 (require 'javascript-mode)
@@ -123,3 +124,14 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+
+; Install mode-compile to give friendlier compiling support!
+(load "~/.emacs.d/mode-compile.el")
+(require 'mode-compile)
+(autoload 'mode-compile "mode-compile"
+  "Command to compile current buffer file based on the major mode" t)
+(global-set-key (kbd "C-c c") 'mode-compile)
+(autoload 'mode-compile-kill "mode-compile"
+  "Command to kill a compilation launched by `mode-compile'" t)
+(global-set-key (kbd "C-c k") 'mode-compile-kill)
