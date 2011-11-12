@@ -47,8 +47,8 @@ my_modKey = mod4Mask
 myConfig = withUrgencyHook NoUrgencyHook defaultConfig
     { terminal = my_terminal
     , modMask = my_modKey
-    , focusedBorderColor = "red"
-    , normalBorderColor = "gray"
+    , focusedBorderColor = "#bbbbbb"
+    , normalBorderColor = "#222222"
     , borderWidth = 3
     , manageHook = floatNextHook
                <+> manageDocks
