@@ -142,3 +142,7 @@
 
 ;; Enable flyspell while in text-mode
 (add-hook 'text-mode-hook 'flyspell-mode)
+
+;; Io mode
+(add-to-list 'load-path "~/.emacs.d/io-emacs")
+(require 'io-mode-inf)
