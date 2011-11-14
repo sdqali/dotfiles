@@ -39,7 +39,7 @@ addWorkspaces = [("0", xK_0)]
 noStealFocusWins = ["Pidgin"]
 
 -- Misc constants
-my_terminal = "xfce4-terminal"
+my_terminal = "gnome-terminal"
 my_modKey = mod4Mask
 
 
@@ -65,7 +65,7 @@ myConfig = withUrgencyHook NoUrgencyHook defaultConfig
 myKeys = [ ((my_modKey .|. shiftMask, xK_l), spawn cmd_lockScreen)
          , ((0, keyCode_volDown), spawn cmd_volDown)
          , ((0, keyCode_volUp), spawn cmd_volUp)
-         , ((0, keyCode_volMute), spawn cmd_volMute)
+--         , ((0, keyCode_volMute), spawn cmd_volMute)
          , ((0, keyCode_suspend), spawn cmd_lockSuspend)
          , ((my_modKey, xK_i), withFocused $ sendMessage . MinimizeWin)
          , ( (my_modKey .|. shiftMask, xK_i)
