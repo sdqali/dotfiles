@@ -1,7 +1,7 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+Config { font = "xft:Droid Sans Mono:size=11:antialias=true"
 , bgColor = "black"
-, fgColor = "grey"
-, position = Static { xpos = 0, ypos = 0, width = 1800, height = 16 },
+, fgColor = "white"
+, position = Static { xpos = 0, ypos = 0, width = 1800, height = 20 },
 , lowerOnStart = True
 , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
              , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
@@ -13,6 +13,6 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
              ]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%StdinReader% }{%cpu% | %memory% * %swap% | %eth0% | <fc=#ee9a00>%date%</fc>"
+, template = "%StdinReader% }{%cpu% | %memory% * %swap% | %eth0% | <fc=#00ff00>%date%</fc>"
 }
 
