@@ -143,6 +143,11 @@
 ;; Enable flyspell while in text-mode
 (add-hook 'text-mode-hook 'flyspell-mode)
 
-;; Io mode
+;; Io inf mode
 (add-to-list 'load-path "~/.emacs.d/io-emacs")
 (require 'io-mode-inf)
+
+;; Io major mode
+(load "~/.emacs.d/io-mode.el")
+(require 'io-mode)
+
