@@ -11,6 +11,7 @@ import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.WindowNavigation
+import XMonad.Layout.Grid
 import XMonad.StackSet hiding (workspaces)
 import XMonad.Util.EZConfig
 import XMonad.Actions.CycleWS
@@ -39,7 +40,7 @@ addWorkspaces = [("0", xK_0)]
 noStealFocusWins = ["Pidgin"]
 
 -- Misc constants
-my_terminal = "gnome-terminal"
+my_terminal = "terminator"
 my_modKey = mod4Mask
 
 
@@ -103,7 +104,7 @@ myKeys = [ ((my_modKey .|. shiftMask, xK_l), spawn cmd_lockScreen)
 
 -- Workspace layouts
 myLayouts = (maximize $ Tall 1 (3/100) (1/2))
-        ||| simpleTabbed
+        ||| simpleTabbed ||| Grid
 
 main = do
   h <- spawnPipe "xmobar /home/sdqali/.xmobarrc"
