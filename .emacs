@@ -124,3 +124,7 @@
 
 ;; load rcirc notify
 (eval-after-load 'rcirc '(require 'rcirc-notify))
+
+;; autopair
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
